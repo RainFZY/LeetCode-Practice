@@ -12,7 +12,34 @@
 #         self.left = None
 #         self.right = None
 
+# 法一：递归
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return root
+
+        temp = root.left
+        root.left = root.right
+        root.right = temp
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
+
+
+# 法二：递归（变式）
+# class Solution:
+#     def invertTree(self, root: TreeNode) -> TreeNode:
+#         if not root:
+#             return root
+
+#         left = self.invertTree(root.left)
+#         right = self.invertTree(root.right)
+
+#         root.left = right
+#         root.right = left
+
+#         return root
+
 # @lc code=end
 

@@ -33,9 +33,7 @@ class Solution:
 
         if root == None:
             return True
-        if root.val <= min:
-            return False
-        if root.val >= max:
+        if root.val <= min or root.val >= max:
             return False
         # 递归过程，向下检测左右子树，传入新的最大值最小值
         return self.isValidBST(root.left, min, root.val) and \
