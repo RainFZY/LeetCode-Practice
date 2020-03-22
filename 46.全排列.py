@@ -16,6 +16,7 @@ class Solution:
                 return 
             for i in range(len(nums)):
                 # 若nums[:0]返回的是[]
+                # nums在这里的作用就是把temp中加入的那个数在可选中给去掉
                 backTracking(nums[:i] + nums[i+1:], temp + [nums[i]])
         backTracking(nums,[])
         return res

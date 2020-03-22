@@ -27,6 +27,20 @@ class Solution:
             # reverse state 清理当前层，不用清理
         backTracking()
         return res
-            
+
+# 生成所有的情况（有效 + 无效）
+# class Solution:
+#     def generateParenthesis(self, n: int) -> List[str]: 
+#         res = []
+#         def backTracking(i = 0, temp = ""):
+#             if i == 2 * n:
+#                 res.append(temp)
+#                 return
+#             backTracking(i + 1, temp + "(")
+#             backTracking(i + 1, temp + ")")
+#         backTracking()
+#         print(res)
+#         print(len(res))
+#         return res
 # @lc code=end
 
