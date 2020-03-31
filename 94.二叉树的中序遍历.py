@@ -27,31 +27,30 @@
 #             return res
 
 # 法一变式
-# class Solution:
-#     def inorderTraversal(self, root: TreeNode) -> List[int]:
-#         res = []
-#         def helper(root):
-#             if root:
-#                 helper(root.left)
-#                 res.append(root.val) # 别漏掉.val
-#                 helper(root.right)
-#                 return res
-#         helper(root)
-#         return res
-
-# 法二，迭代，利用栈
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
-        stack = []
-        while root or stack:
-            while root:
-                stack.append(root)
-                root = root.left
-            root = stack.pop()
-            res.append(root.val) # 别漏掉.val
-            root = root.right
+        def helper(root):
+            if root:
+                helper(root.left)
+                res.append(root.val) # 别漏掉.val
+                helper(root.right)
+        helper(root)
         return res
+
+# 法二，迭代，利用栈
+# class Solution:
+#     def inorderTraversal(self, root: TreeNode) -> List[int]:
+#         res = []
+#         stack = []
+#         while root or stack:
+#             while root:
+#                 stack.append(root)
+#                 root = root.left
+#             root = stack.pop()
+#             res.append(root.val) # 别漏掉.val
+#             root = root.right
+#         return res
 
 
 

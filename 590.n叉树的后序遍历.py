@@ -31,34 +31,34 @@ class Node:
 #             list.append(child.val)
 
 # 法一变式
-# class Solution:
-#     def postorder(self, root: 'Node') -> List[int]:
-#         res = []
-#         if not root:
-#             return res
-#         def helper(root):
-#             if root:
-#                 for child in root.children:
-#                     helper(child)
-#                 res.append(root.val)
-#         helper(root)
-#         return res
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        res = []
+        if not root:
+            return res
+        def helper(root):
+            if root:
+                for child in root.children:
+                    helper(child)
+                res.append(root.val)
+        helper(root)
+        return res
 
 
 # 法二：迭代法
-class Solution:
-    def postorder(self, root: 'Node') -> List[int]:
-        if not root:
-            return []
-        stack, ans = [root], []
-        while stack:
-            current = stack.pop()
-            ans.append(current.val)
-            stack.extend(current.children[:])
-        # 后序遍历的迭代法的思路一般都是按倒着排最后再倒过来
-        ans.reverse()
+# class Solution:
+#     def postorder(self, root: 'Node') -> List[int]:
+#         if not root:
+#             return []
+#         stack, ans = [root], []
+#         while stack:
+#             current = stack.pop()
+#             ans.append(current.val)
+#             stack.extend(current.children[:])
+#         # 后序遍历的迭代法的思路一般都是按倒着排最后再倒过来
+#         ans.reverse()
         
-        return ans
+#         return ans
   
         
 # @lc code=end

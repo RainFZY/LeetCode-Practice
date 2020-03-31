@@ -14,7 +14,7 @@
 
 
 # 跟104最大深度的做法不同，最小深度条件的判断更苛刻一些
-# 因为一边有节点一边是null的情况不能满足min()+1的公式，需要单独列出考虑
+# 因为一边有节点一边是0(没有节点)的情况不能满足min()+1的公式，需要单独列出考虑
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if not root:
