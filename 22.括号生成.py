@@ -39,8 +39,6 @@ class Solution:
 #             backTracking(i + 1, temp + "(")
 #             backTracking(i + 1, temp + ")")
 #         backTracking()
-#         print(res)
-#         print(len(res))
 #         return res
 # @lc code=end
 
