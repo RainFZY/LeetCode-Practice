@@ -7,14 +7,15 @@
 # @lc code=start
 # 法一：动态规划（自底向上）
 # 到amount的最少数量 = 到(amount - 某个coin值)的最少数量 + 1（那个coin）
-# 用一个数组存储0 - amount每个值对应的最少数量
+# 用一个数组存储0 - amount每个值对应的最少数量，若没法凑出则是初始化的amount + 1
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         res = [amount + 1] * (amount + 1)
         res[0] = 0
-        for coin in coins:
-            for x in range(coin, amount + 1):
-                res[x] = min(res[x] , res[x - coin] + 1)
+        for x in range(1, amount + 1):
+            for coin in coins:
+                if coin <= x:
+                    res[x] = min(res[x] , res[x - coin] + 1)
         return res[amount] if res[amount] < amount + 1 else -1
 
 
