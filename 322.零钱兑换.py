@@ -19,18 +19,19 @@ class Solution:
         return res[amount] if res[amount] < amount + 1 else -1
 
 
-# 法二：动态规划（自顶向下）
+# 法二：递归（自顶向下）
 # import functools
 # class Solution:
 #     def coinChange(self, coins: List[int], amount: int) -> int:
-#         @functools.lru_cache(amount) # 及时释放缓存
+#         @functools.lru_cache(amount) # 及时释放缓存，相当于递归树的剪枝，避免重复计算
 #         def dp(amount):
+#             # terminator
 #             if amount < 0: return -1
 #             if amount == 0: return 0
 #             # min = float('inf')
 #             min = amount + 1 # 最大边界（coin全是1）
 #             for coin in coins:
-#                 # key step
+#                 # key step，drill down
 #                 temp = dp(amount - coin)
 #                 if temp >= 0 and temp + 1 <= min:
 #                     min = temp + 1
