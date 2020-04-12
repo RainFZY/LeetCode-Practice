@@ -23,6 +23,7 @@
 # 如果 sum > 0，则说明 sum 对结果有增益效果，则 sum 保留并加上当前遍历数字
 # 如果 sum <= 0，则说明 sum 对结果无增益效果，需要舍弃，则 sum 直接更新为当前遍历数字
 # 每次比较 sum 和 ans的大小，将最大值置为ans，遍历结束返回结果
+# DP方程：f[i] = max(f[i - 1], 0) + a[i]
 # class Solution:
 #     def maxSubArray(self, nums: List[int]) -> int:
 #         sum = nums[0]
@@ -36,15 +37,22 @@
 #         return ans
 
 # 法二变式
+# class Solution:
+#     def maxSubArray(self, nums: List[int]) -> int:
+#         max_sum = nums[0]
+#         for i in range(1, len(nums)):
+#             if nums[i - 1] > 0:
+#                 nums[i] += nums[i - 1]
+#             max_sum = max(max_sum, nums[i])
+#         return max_sum
+
+# 法三，把每个位置处的最长值记录一个新的数组中，最后再求max
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_sum = nums[0]
+        dp = nums
         for i in range(1, len(nums)):
-            if nums[i - 1] > 0:
-                nums[i] += nums[i - 1]
-            max_sum = max(max_sum, nums[i])
-        return max_sum
-
+            dp[i] = max(dp[i - 1], 0) + nums[i]
+        return max(dp)
 
 # @lc code=end
 
