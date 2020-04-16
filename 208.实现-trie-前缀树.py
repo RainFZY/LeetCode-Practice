@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+# 用字典嵌套的方式实现，每个节点对应一个字典，key存放该节点的子节点，value对应子节点的字典
 class Trie:
 
     def __init__(self):
