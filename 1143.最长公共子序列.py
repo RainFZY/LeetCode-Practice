@@ -10,7 +10,7 @@
 # 图看这篇题解：https://leetcode-cn.com/problems/longest-common-subsequence/solution/dong-tai-gui-hua-zhi-zui-chang-gong-gong-zi-xu-lie/
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        if not text1 or text2:
+        if not text1 or not text2:
             return 0
         m = len(text1)
         n = len(text2)
@@ -25,6 +25,21 @@ class Solution:
                     dp[i][j] = 1 + dp[i - 1][j - 1]
                 else:
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-        return dp[m, n]
+        return dp[-1][-1]
+
+# 法二，递归，超时，二维情况不能用哈希表存储，得用法一的dp table存储
+# class Solution:
+#     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+#         def recursion(i, j):
+#             # terminatior
+#             if i == -1 or j == -1:
+#                 return 0
+#             # drill down
+#             if text1[i] == text2[j]:
+#                 return recursion(i-1, j-1) + 1
+#             else:
+#                 return max(recursion(i-1, j), recursion(i, j-1))
+#         return recursion(len(text1)-1, len(text2)-1)
+            
 # @lc code=end
 

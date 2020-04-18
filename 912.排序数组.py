@@ -50,13 +50,20 @@ class Solution:
     def merge(self, array, left, mid, right):
         i, j = left, mid + 1
         temp = []
-        while i <= mid or j <= right:
-            if i > mid or (j <= right and array[j] < array[i]):
-                temp.append(array[j])
-                j += 1
-            else:
+        while i <= mid and j <= right:
+            if array[i] < array[j]:
                 temp.append(array[i])
                 i += 1
+            else:
+                temp.append(array[j])
+                j += 1
+        # 补余
+        while i <= mid:
+            temp.append(array[i])
+            i += 1
+        while j <= right:
+            temp.append(array[j])
+            j += 1
         array[left: right + 1] = temp 
 
 
