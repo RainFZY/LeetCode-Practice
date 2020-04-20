@@ -35,7 +35,7 @@
 #             self.na.add(row - col)
 #             # drill down
 #             self.DFS(n, row + 1, cur_state + [col])
-
+#             # 回溯
 #             self.cols.remove(col)
 #             self.pie.remove(row + col)
 #             self.na.remove(row - col)
