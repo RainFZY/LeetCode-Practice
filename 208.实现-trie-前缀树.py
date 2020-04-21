@@ -27,7 +27,7 @@ class Trie:
             # 如果字典的key包含有char，则返回char这个key对应的value，
             # 即node变成这个value表示的的字典，否则返回{}（这样node实现迭代向下，知道最下面的节点）
             node = node.setdefault(char, {})
-        node[self.end_of_word] = self.end_of_word
+        node[self.end_of_word] = self.end_of_word # value值随意定
 
     def search(self, word: str) -> bool:
         """
