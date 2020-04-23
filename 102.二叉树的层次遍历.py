@@ -18,10 +18,13 @@
 #         if not root:
 #             return []
 #         res = []
+#         # 维护一个队列
 #         cur_level = [root]
+#         # 队列不为空时
 #         while cur_level:
 #             next_level = []
 #             temp = []
+#             # 遍历队列中的节点
 #             for node in cur_level:
 #                 temp.append(node.val)
 #                 if node.left:
@@ -29,6 +32,7 @@
 #                 if node.right:
 #                     next_level.append(node.right)
 #             res.append(temp)
+#             # 更新队列
 #             cur_level = next_level
 #         return res
 
