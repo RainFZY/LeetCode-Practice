@@ -20,7 +20,7 @@ class Solution:
                             # 看放上char后是否合法
                             if self.solveSudoku(board):
                                  return True
-                            # 若不合法，说明不能放这个char，则返回原始状态
+                            # 若不合法，说明不能放这个char，则返回原始状态，剪枝
                             else:
                                 board[i][j] = '.'
                     return False
