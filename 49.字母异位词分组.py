@@ -12,7 +12,13 @@ class Solution:
         for s in strs:
             hashMap[tuple(sorted(s))] = hashMap.get(tuple(sorted(s)), []) + [s]
         # 把字典的所有value包括到一个数组中返回
+        # 法一
+        # dict.values()：以列表返回字典中的所有值，字符串形式
         return list(hashMap.values())
-
+        # 法二
+        # res = []
+        # for (key, value) in hashMap.items():
+        #     res.append(value)
+        # return res
 # @lc code=end
 
