@@ -26,6 +26,9 @@ class Solution:
         return res
 
 # DP
+# P(i，j)= true --> s[i，j]是回文串
+#          false --> s[i，j]不是回文串
+# P(i, j) = (P(i+1,j-1) && S[i]== S[j])
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
