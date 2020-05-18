@@ -6,21 +6,22 @@
 
 # @lc code=start
 # s：主串，p：模式串
+# 这篇题解非常好：https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/
 # 法一，回溯，暴力递归
-# class Solution:
-#     def isMatch(self, s: str, p: str) -> bool:
-#         if not p:
-#             return not s
-#         first_match = bool(s) and p[0] in {s[0], '.'}
-#         # 如果模式串中有星号，它会出现在第二个位置，即 p[1]，此时可以：
-#         if len(p) >= 2 and p[1] == '*':
-#             # 1. 直接忽略模式串中这一部分
-#             # 2. 若第一字符能匹配，忽略匹配串的第一个字符
-#             return self.isMatch(s, p[2:]) or \
-#                 first_match and self.isMatch(s[1:], p)
-#         # 没有星号，则只要一直检查起始字符是否匹配然后跳过即可
-#         else:
-#             return first_match and self.isMatch(s[1:], p[1:])
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        if not p:
+            return not s
+        first_match = bool(s) and p[0] in {s[0], '.'}
+        # 如果模式串中有星号，它会出现在第二个位置，即 p[1]，此时可以：
+        if len(p) >= 2 and p[1] == '*':
+            # 1. 直接忽略模式串中这一部分
+            # 2. 若第一字符能匹配，忽略匹配串的第一个字符
+            return self.isMatch(s, p[2:]) or \
+                first_match and self.isMatch(s[1:], p)
+        # 没有星号，则只要一直检查起始字符是否匹配然后跳过即可
+        else:
+            return first_match and self.isMatch(s[1:], p[1:])
 
 # 法二，DP
 # 用 dp(i,j) 表示s[i:] 和 p[j:] 是否能匹配
