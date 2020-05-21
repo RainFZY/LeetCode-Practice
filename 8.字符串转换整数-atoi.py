@@ -16,7 +16,9 @@ class Solution:
             ls = ls[1:]
         res, i = 0, 0
         while i < len(ls) and ls[i].isdigit():
+            # ord() --> 字符转ASCII码
             res = res * 10 + ord(ls[i]) - ord('0')
+            # res = res * 10 + int(ls[i])
             i += 1
         return max(-2 ** 31, min(sign * res, 2 ** 31 - 1))
 # @lc code=end

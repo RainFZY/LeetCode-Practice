@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+# 异位词 --> sorted后相同
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         n = len(p)
