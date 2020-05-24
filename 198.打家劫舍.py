@@ -20,21 +20,21 @@ class Solution:
         return max(array[n - 1][0], array[n - 1][1])
 
 # 一维DP
-# class Solution:
-#     def rob(self, nums: List[int]) -> int:
-#         if not nums:
-#             return 0
-#         n = len(nums)
-#         if n == 1:
-#             return nums[0]
-#         dp = nums
-#         dp[0] = nums[0]
-#         dp[1] = max(nums[0], nums[1])
-#         res = dp[1]
-#         for i in range(2, n):
-#             dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
-#             res = max(res, dp[i])
-#         return res
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        dp = nums
+        dp[0] = nums[0]
+        dp[1] = max(nums[0], nums[1])
+        res = dp[1]
+        for i in range(2, n):
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
+            res = max(res, dp[i])
+        return res
 
 # 最简版，改写法二
 # class Solution:
