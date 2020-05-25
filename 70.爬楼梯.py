@@ -25,7 +25,7 @@
 #             f3 = f1 + f2
 #         return f3
 
-# 法二：迭代，数组，自底向上
+# 法二：DP,迭代，数组，自底向上
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n <= 2:
