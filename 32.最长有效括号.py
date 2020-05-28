@@ -9,6 +9,7 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         maxnum = 0
+        # 防止pop时stack为空报错
         stack = [-1]
         for i in range(len(s)):
             if s[i] == "(":
