@@ -61,21 +61,21 @@ class Solution:
 # 每次在这些元素里面选取 val属性最小的元素合并到答案中
 # 这个答案有问题，不知为何，还有另一个版本的优先级队列
 # https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/leetcode-23-he-bing-kge-pai-xu-lian-biao-by-powcai/
-from queue import PriorityQueue
-class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        prehead = prev = ListNode(-1)
-        q = PriorityQueue()
-        for l in lists:
-            if l:
-                q.put((l.val, l))
-        while not q.empty():
-            val, node = q.get()
-            prev.next = ListNode(val)
-            prev.next = prev
-            node = node.next
-            if node:
-                q.put((node.val, node))
-        return prehead.next
+# from queue import PriorityQueue
+# class Solution:
+#     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+#         prehead = prev = ListNode(-1)
+#         q = PriorityQueue()
+#         for l in lists:
+#             if l:
+#                 q.put((l.val, l))
+#         while not q.empty():
+#             val, node = q.get()
+#             prev.next = ListNode(val)
+#             prev.next = prev
+#             node = node.next
+#             if node:
+#                 q.put((node.val, node))
+#         return prehead.next
 # @lc code=end
 
