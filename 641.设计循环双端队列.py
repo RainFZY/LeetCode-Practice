@@ -5,13 +5,18 @@
 #
 
 # @lc code=start
+# 数组实现
+# 动画见https://leetcode-cn.com/problems/design-circular-deque/solution/shu-zu-shi-xian-de-xun-huan-shuang-duan-dui-lie-by/
+# 622 数组实现双端队列
 class MyCircularDeque:
 
     def __init__(self, k: int):
         """
         Initialize your data structure here. Set the size of the deque to be k.
         """
+        # 头指针
         self.front = 0
+        # 尾指针
         self.rear = 0
         self.capacity = k + 1
         self.arr = [0 for _ in range(self.capacity)]
