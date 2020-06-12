@@ -24,8 +24,8 @@ class Solution:
         min_ = max_ = res = nums[0]
         for i in range(1, len(nums)):
             max_, min_ = \
-            max(max(max_ * nums[i], nums[i]), min_ * nums[i]), \
-            min(min(max_ * nums[i], nums[i]), min_ * nums[i])
+            max(max_ * nums[i], nums[i], min_ * nums[i]), \
+            min(max_ * nums[i], nums[i], min_ * nums[i])
             res = max(res, max_)
         return res
 # @lc code=end
