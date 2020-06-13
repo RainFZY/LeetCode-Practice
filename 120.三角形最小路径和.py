@@ -20,14 +20,14 @@ class Solution:
 
 
 # 法一，DP，空间优化
-# class Solution:
-#     def minimumTotal(self, triangle: List[List[int]]) -> int:
-#         # 新建一个一维数组存储结果
-#         res = triangle[-1]
-#         for i in range(len(triangle) - 2, -1, -1):
-#             for j in range(len(triangle[i])):
-#                 res[j] = min(res[j], res[j + 1]) + triangle[i][j]
-#         return res[0]
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        # 新建一个一维数组存储结果
+        res = triangle[-1]
+        for i in range(len(triangle) - 2, -1, -1):
+            for j in range(len(triangle[i])):
+                res[j] = min(res[j], res[j + 1]) + triangle[i][j]
+        return res[0]
 
 # 法二，递归，自顶向下
 # import functools

@@ -23,6 +23,7 @@ class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         min_ = max_ = res = nums[0]
         for i in range(1, len(nums)):
+            # 一定要并列写，保证同时更新
             max_, min_ = \
             max(max_ * nums[i], nums[i], min_ * nums[i]), \
             min(max_ * nums[i], nums[i], min_ * nums[i])
