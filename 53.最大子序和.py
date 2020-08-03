@@ -46,7 +46,7 @@
 #             max_sum = max(max_sum, nums[i])
 #         return max_sum
 
-# 法三，把每个位置处的最长值记录一个新的数组中，最后再求max
+# 法三，把每个位置处的最大值记录一个新的数组中，最后再求max
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         dp = nums
