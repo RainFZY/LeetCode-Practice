@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+# 贪心，遍历 + 计数
 class Solution:
     def lemonadeChange(self, bills: List[int]) -> bool:
         five, ten = 0, 0
@@ -16,6 +17,7 @@ class Solution:
                     return False
                 five -= 1
                 ten += 1
+            # bill == 20
             else:
                 # 贪心算法体现在这里
                 # 能给10元就给10元，而不是3个5元，5元留着用在bill=10的情况

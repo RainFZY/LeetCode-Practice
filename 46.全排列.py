@@ -5,15 +5,17 @@
 #
 
 # @lc code=start
-# 回溯，实在难懂
+# 回溯
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
         n = len(nums)
         def backTracking(nums, temp):
+            # terminator
             if len(temp) == n:
                 res.append(temp)
-                return 
+                return
+            # drill down
             for i in range(len(nums)):
                 # 若nums[:0]返回的是[]
                 # nums在这里的作用就是把temp中加入的那个数在可选中给去掉
