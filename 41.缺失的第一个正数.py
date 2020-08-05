@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 法一，哈希表
+# 法一，哈希表【推荐】
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         hashMap = {}

@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 双指针法
+# 双指针两边推进
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         res = 0

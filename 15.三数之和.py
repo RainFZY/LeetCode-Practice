@@ -16,7 +16,9 @@
 #                         ans.append([nums[x], nums[y], nums[z]])
 #         return ans
 
-# 法二：双指针中间推进
+# 法二：类似16，找三个数：循环固定一个数 + 双指针中间推进
+# 记住模板，排序 --> for循环固定一个数 --> while双指针条件判断
+# --> 双指针两边推进
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
@@ -29,6 +31,7 @@ class Solution:
                 s = nums[k] + nums[i] + nums[j]
                 if s < 0:
                     i += 1
+                    # 避免重复的答案出现
                     while i < j and nums[i] == nums[i - 1]:
                         i += 1
                 elif s > 0:

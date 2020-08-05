@@ -27,5 +27,13 @@ class Solution:
                     right = mid - 1
         return -1
 
+
+# 库函数
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if nums.count(target):
+            return nums.index(target)
+        else:
+            return -1
 # @lc code=end
 

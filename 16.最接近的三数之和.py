@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 枚举三个数，循环固定一个数 + 双指针 优化暴力枚举
+# 类似15，找三个数：循环固定一个数 + 双指针中间推进，优化暴力枚举
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()

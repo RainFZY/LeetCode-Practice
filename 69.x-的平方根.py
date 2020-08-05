@@ -5,6 +5,11 @@
 #
 
 # @lc code=start
+# 库函数
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        return int(sqrt(x))
+
 # 二分查找
 class Solution:
     def mySqrt(self, x: int) -> int:

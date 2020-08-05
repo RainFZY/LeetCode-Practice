@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+# 将非零位排序，之后补零
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
@@ -12,7 +13,7 @@ class Solution:
         """
         n = len(nums)
         count = 0 # 记非零个数
-        for i in range(0, n):
+        for i in range(n):
             if(nums[i] != 0):
                 nums[count] = nums[i]
                 count += 1
