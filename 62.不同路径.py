@@ -6,17 +6,17 @@
 
 # @lc code=start
 # DP动态规划
-# class Solution:
-#     def uniquePaths(self, m: int, n: int) -> int:
-#         # 创建一个m * n的二维数组
-#         # 必须得初始化为1，代表到某个点有1种走法
-#         array = [[1] * n for _ in range(m)]
-#         for i in range(m):
-#             for j in range(n):
-#                 if i == 0 or j == 0:
-#                     continue
-#                 array[i][j] = array[i - 1][j] + array[i][j - 1]
-#         return array[-1][-1]
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        # 创建一个m * n的二维数组
+        # 必须得初始化为1，代表到某个点有1种走法
+        array = [[1] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if i == 0 or j == 0:
+                    continue
+                array[i][j] = array[i - 1][j] + array[i][j - 1]
+        return array[-1][-1]
 
 
 # DP动态规划优化版：
