@@ -30,19 +30,19 @@ class Solution:
         return res[0]
 
 # 法二，递归，自顶向下
-# import functools
-# class Solution:
-#     def minimumTotal(self, triangle: List[List[int]]) -> int:
-#         # LRU Cache，最近最少使用释放缓存，不然会超时
-#         @functools.lru_cache()
-#         def recursion(row, column):
-#             if row == len(triangle) - 1:
-#                 return triangle[row][column]
-#             left = recursion(row + 1, column)
-#             right = recursion(row + 1, column + 1)
-#             return min(left, right) + triangle[row][column]  
+import functools
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        # LRU Cache，最近最少使用释放缓存，不然会超时
+        @functools.lru_cache()
+        def recursion(row, column):
+            if row == len(triangle) - 1:
+                return triangle[row][column]
+            left = recursion(row + 1, column)
+            right = recursion(row + 1, column + 1)
+            return min(left, right) + triangle[row][column]  
         
-#         return recursion(0, 0)
+        return recursion(0, 0)
 
 # @lc code=end
 

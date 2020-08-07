@@ -36,6 +36,7 @@ class Solution:
             if hashMap.get((i, j)):
                 return hashMap[(i, j)]
             # terminatior
+            # -1 是由 i = 0 或 j = 0时drill down后 i-1 或 j-1得到的
             if i == -1 or j == -1:
                 return 0
             # drill down
@@ -45,6 +46,21 @@ class Solution:
                 hashMap[(i, j)] = max(recursion(i-1, j), recursion(i, j-1))
             return hashMap[(i, j)]
         return recursion(len(text1)-1, len(text2)-1)
+
+
+# 法三，递归 + lru_cache
+import functools
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        @functools.lru_cache(None)
+        def recursion(i, j):
+            if i == -1 or j == -1:
+                return 0
+            if text1[i] == text2[j]:
+                return recursion(i - 1, j - 1) + 1
+            else:
+                return max(recursion(i - 1, j), recursion(i, j - 1))
+        return recursion(len(text1) - 1, len(text2) - 1)
             
 # @lc code=end
 
