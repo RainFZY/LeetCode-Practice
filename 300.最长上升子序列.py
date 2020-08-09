@@ -14,6 +14,7 @@ class Solution:
             return 0
         n = len(nums)
         dp = [1] * n
+        # 双指针遍历所有片段
         for i in range(n):
             for j in range(i):
                 if nums[j] < nums[i]:

@@ -33,7 +33,8 @@ class Solution:
         res = dp[1]
         for i in range(2, n):
             dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
-            res = max(res, dp[i])
+            # res = max(res, dp[i])
+        res = max(dp)
         return res
 
 # 最简版，改写法二

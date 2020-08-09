@@ -7,14 +7,14 @@
 # @lc code=start
 # 法一：贪心算法
 # 遍历数组，找出每一步时最大的序列和（max_curr）
-# class Solution:
-#     def maxSubArray(self, nums: List[int]) -> int:
-#         max_sum = nums[0]
-#         max_curr = nums[0]
-#         for i in range(1, len(nums)):
-#             max_curr = max(nums[i], max_curr + nums[i])
-#             max_sum = max(max_sum, max_curr)
-#         return max_sum
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_sum = nums[0]
+        max_curr = nums[0]
+        for i in range(1, len(nums)):
+            max_curr = max(nums[i], max_curr + nums[i])
+            max_sum = max(max_sum, max_curr)
+        return max_sum
 
 # 法二：动态规划，思路基本跟贪心类似
 # 对数组进行遍历，对于每一个位置，若它之前的sum为负，说明还不如不要之前只要现在位置的来的大，就抛弃之前的
@@ -52,6 +52,7 @@ class Solution:
         dp = nums
         for i in range(1, len(nums)):
             dp[i] = max(dp[i - 1], 0) + nums[i]
+        # 直接用 max() 获得dp数组中最大值，这样就省去了每一步max_curr和max_sum比较
         return max(dp)
 
 # @lc code=end

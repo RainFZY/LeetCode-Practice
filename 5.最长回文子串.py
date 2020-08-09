@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 中心扩散法，共 2n - 1个中心
+# 双指针中心扩散法，共 2n - 1个中心
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ""
@@ -21,11 +21,12 @@ class Solution:
         for i in range(len(s)):
             odd = spread(i, i)
             even = spread(i, i+1)
+            # 返回最长的字符串
             res = max(odd, even, res, key=len)
 
         return res
 
-# DP
+# 二维DP
 # P(i，j)= true --> s[i，j]是回文串
 #          false --> s[i，j]不是回文串
 # P(i, j) = (P(i+1,j-1) && S[i]== S[j])
@@ -38,6 +39,7 @@ class Solution:
         for i in range(n):
             dp[i][i] = True
         max_len, start = 1, 0
+        # 双指针遍历所有子串
         for j in range(1, n):
             for i in range(j):
                 if s[i] == s[j]:

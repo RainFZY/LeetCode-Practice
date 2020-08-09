@@ -6,25 +6,26 @@
 
 # @lc code=start
 # max_k = 2
-# class Solution:
-#     def maxProfit(self, prices: List[int]) -> int:
-#         if not prices:
-#             return 0
-#         max_k = 2
-#         n = len(prices)
-#         dp = [[[0] * 2 for _ in range(max_k + 1)] for _ in range(n)]
-#         for i in range(0, n):
-#             for k in range(max_k, 0, -1):
-#                 # base case
-#                 if i == 0:
-#                     dp[0][k][0] = 0
-#                     dp[0][k][1] = -prices[0]
-#                     continue
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+        max_k = 2
+        n = len(prices)
+        dp = [[[0] * 2 for _ in range(max_k + 1)] for _ in range(n)]
+        for i in range(0, n):
+            for k in range(max_k, 0, -1):
+                # base case
+                if i == 0:
+                    dp[0][k][0] = 0
+                    dp[0][k][1] = -prices[0]
+                    continue
 
-#                 dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
-#                 dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
+                dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
+                # 选择 buy 的时候，把 k 减 1 ，也可以在 sell 的时候减 1，一样的
+                dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
 
-#         return dp[n-1][max_k][0]
+        return dp[n-1][max_k][0]
 
 
 # 相比法一构建三维数组，这样子大大节省空间
