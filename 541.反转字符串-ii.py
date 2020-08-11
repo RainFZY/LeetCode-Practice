@@ -12,6 +12,7 @@ class Solution:
         # 关建行
         for i in range(0, len(s), 2 * k):
             a[i: i + k] = reversed(a[i: i + k])
+        # 数组转字符串
         return "".join(a)
 
 # 双指针

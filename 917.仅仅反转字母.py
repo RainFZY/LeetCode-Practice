@@ -21,6 +21,7 @@ class Solution:
         return "".join(res)
 
 # 栈
+# 两次遍历，一个栈专门存字母，另一个栈存结果
 class Solution:
     def reverseOnlyLetters(self, S: str) -> str:
         # letters = [char for char in S if char.isalpha()]

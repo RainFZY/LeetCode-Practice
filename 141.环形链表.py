@@ -12,16 +12,17 @@
 #         self.next = None
 
 # 法一：哈希表法
-# class Solution:
-#     def hasCycle(self, head: ListNode) -> bool:
-#         harshmap = []
-#         while head:
-#             if harshmap.count(head):
-#                 return True
-#             else:
-#                 harshmap.append(head)
-#             head = head.next
-#         return False
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        harshmap = []
+        while head:
+            # .count()查看数组中是否存在某个数
+            if harshmap.count(head):
+                return True
+            else:
+                harshmap.append(head)
+            head = head.next
+        return False
 
 
 # 法二：快慢指针

@@ -23,6 +23,7 @@ class Solution:
     def isPalindrome(self, s: str) -> bool:
         left, right = 0, len(s) - 1
         while left < right:
+            # 跳过其他非字母/数字字符，排除干扰
             # isalnum: num + alpha
             while left < right and not s[left].isalnum():
                 left += 1

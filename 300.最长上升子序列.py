@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 法一DP
+# 法一：DP + 双指针
 # 状态定义成：dp[i] 表示以 nums[i] 结尾的「上升子序列」的长度
 # 状态转移方程：dp[i]= max(dp[j]+1)，其中 0≤j<i，nums[j]<nums[i]
 class Solution:
