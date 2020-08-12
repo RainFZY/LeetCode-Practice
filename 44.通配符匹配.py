@@ -6,6 +6,7 @@
 
 # @lc code=start
 # DP，自底向上，类似10
+# s：主串，p：模式串
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         sn = len(s)

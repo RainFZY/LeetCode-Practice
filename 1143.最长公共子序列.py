@@ -14,7 +14,7 @@ class Solution:
             return 0
         m = len(text1)
         n = len(text2)
-        # 专门让索引为 0 的行和列表示空串，因此是n + 1和m + 1
+        # 专门让索引为 0 的行和列表示空串，防止边界溢出，因此是n + 1和m + 1
         # dp[0][..] 和 dp[..][0] 都应该初始化为 0，这就是 base case
         dp = [[0] * (n + 1) for _ in range(m + 1)]
         for i in range(1, m + 1):
