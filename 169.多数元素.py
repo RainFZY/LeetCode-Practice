@@ -11,19 +11,20 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         hashMap = {}
         for num in nums:
-            if hashMap.get(num):
-                hashMap[num] += 1
-            else:
-                hashMap[num] = 1
+            # if hashMap.get(num):
+            #     hashMap[num] += 1
+            # else:
+            #     hashMap[num] = 1
+            hashMap[num] = hashMap.get(num, 0) + 1
             if hashMap[num] > len(nums)/2:
                 return num
 
 # 法二，排序法
 # O(nlogn)
-# class Solution:
-#     def majorityElement(self, nums: List[int]) -> int:
-#         nums.sort()
-#         return nums[len(nums)//2]
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[len(nums)//2]
 
 # 法三，分治
 # O(nlogn)
