@@ -14,6 +14,7 @@ class Solution:
             return 0
         n = len(M)  
         res = 0
+        # 标记每个学生是否已经有朋友圈，0表示无1表示有
         visited = [0] * n
         def dfs(i):
             for j in range(n):

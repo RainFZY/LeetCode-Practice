@@ -19,6 +19,7 @@ class Solution:
         n = len(grid[0])
         res = 0
         def dfs(i, j):
+            # 沉岛
             grid[i][j] = "0"
             for [x, y] in directions:
                 temp_i = i + x
