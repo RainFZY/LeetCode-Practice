@@ -50,6 +50,7 @@ class Solution:
         # 每个位置的0可以交换的位置
         moves = [(1, 3) , (0, 2, 4), (1, 5), (0, 4), (1, 3, 5), (2, 4)]
         # bfs队列和已访问状态记录
+        # index(0) --> 返回数组中0所在位置的下标
         q, visited = [(tuple(board), board.index(0), 0)], set()
         while q:
             # 当前状态，0的当前位置，当前步数

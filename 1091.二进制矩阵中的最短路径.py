@@ -20,7 +20,8 @@ class Solution:
             # 八连通
             for (dx, dy) in directions:
                 x, y = i + dx, j + dy
-                if 0 <= x < n and 0 <= y < n and not grid[x][y]:
+                # 只有格子为空（0）才能走
+                if 0 <= x < n and 0 <= y < n and grid[x][y] == 0:
                     if x == n - 1 and y == n - 1:
                         return step
                     queue += [(x, y, step + 1)]

@@ -16,8 +16,8 @@ class Solution:
         while queue:
             # 取出头部的，先进先出
             current_word, level = queue.pop(0)
+            # 两层循环，尝试所有的替换情况
             for i in range(n):
-                # 'a' --> 'z'
                 for c in ['A', 'C', 'G', 'T']:
                     # 过渡词（差一个字母）
                     intermediate_word = current_word[:i] + c + current_word[i+1:]
