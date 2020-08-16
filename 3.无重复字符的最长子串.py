@@ -15,13 +15,18 @@ class Solution:
         n = len(s)
         hashMap = []
         for i in range(n):
+            # 出现重复字符
             if s[i] in hashMap:
+                # 该字符上一次出现的位置下标
                 index = hashMap.index(s[i])
+                # 截取该字符之后的子串（滑动窗口左边移动）
                 hashMap = hashMap[index + 1:]
                 hashMap.append(s[i])
                 cur_len = len(hashMap)
+            # 该字符不是重复字符
             else:
                 cur_len += 1
+                # 滑动窗口右边移动
                 hashMap.append(s[i])
             if cur_len > max_len:
                 max_len = cur_len
