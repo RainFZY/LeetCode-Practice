@@ -9,15 +9,17 @@
 class Solution:
     def reverseOnlyLetters(self, S: str) -> str:
         res = []
-        j = len(S) - 1
-        for i in range(len(S)):
-            if S[i].isalpha():
-                while not S[j].isalpha():
-                    j -= 1
-                res.append(S[j])
-                j -= 1
+        right = len(S) - 1
+        for left in range(len(S)):
+            # 左是字母，就寻找右边第一个是字母的添加到res
+            if S[left].isalpha():
+                while not S[right].isalpha():
+                    right -= 1
+                res.append(S[right])
+                right -= 1
+            # 左不是字母，直接添加到res
             else:
-                res.append(S[i])
+                res.append(S[left])
         return "".join(res)
 
 # 栈
