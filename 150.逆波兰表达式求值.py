@@ -22,8 +22,10 @@ class Solution:
             "/": div
         }
         for t in tokens:
+            # 是字符，就加入最近两个数运算后的结果（最近相关性）
             if t in opt:
                 stack.append(opt[t](stack.pop(), stack.pop()))
+            # 是数字，就加入数字
             else:
                 stack.append(int(t))
         return stack.pop()
