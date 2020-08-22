@@ -23,7 +23,8 @@ class Solution:
                     visited[j] = 1
                     dfs(j)
 
-        # 对每个编号的学生进行dfs
+        # 从第0个学生开始，dfs搜索这个学生的朋友圈，
+        # 搜索到的处于他的朋友圈内的学生visited记为1
         for i in range(n):
             # 出现新的联通块
             if visited[i] == 0:
@@ -78,41 +79,73 @@ class Solution:
 #         return res
 
 
-# 法三，并查集
-# class Solution:
-#     def findCircleNum(self, M: List[List[int]]) -> int:
-#         if not M:
-#             return 0
-#         n = len(M)
-#         # 初始化并查集，令p[i] = i
-#         p = [i for i in range(n)]
-#         for i in range(n):
-#             for j in range(n):
-#                 # 合并所有为 1 的连起来的块，把它们归于一个 parent
-#                 if M[i][j] == 1:
-#                     self._union(p, i, j)
-#         # 返回不同的parent的个数，set用来去重
-#         return len(set([self._parent(p, i) for i in range(n)]))        
-    
-#     # 合并
-#     def _union(self, p, i, j):
-#         p1 = self._parent(p, i)
-#         p2 = self._parent(p, j)
-#         # 如果某两个节点被连通，则让其中的（任意）一个节点的根节点接到另一个节点的根节点上
-#         # 或者p[p1] = p2也可以
-#         p[p2] = p1
+# 并查集法一
+# e.g.
+# 初始化father --> [0, 1, 2] # 每个节点的根节点是其本身
+# 最后的father --> [1, 1, 2] # 0和1共享一个根节点，2单独一个，因此共两个朋友圈
+class Solution:
+    def findCircleNum(self, M) -> int:
+        # 记录每个学生的根节点
+        father = [i for i in range(len(M))]
 
-#     # 找父节点/领头元素
-#     def _parent(self, p, i):
-#         root = i
-#         # 不断地往上找parent
-#         while p[root] != root:
-#             root = p[root]
-#         # 路径压缩，这段可以省略
-#         while p[i] != i:
-#             x = i
-#             i = p[i]
-#             p[x] = root
-#         return root
+        # 返回输入节点的根节点
+        def find(a):
+            if father[a] != a: 
+                father[a] = find(father[a])
+            return father[a]
+        # 合并两个节点，让其中的（任意）一个节点的根节点接到另一个节点的根节点上
+        def union(a, b):
+            father[find(b)] = find(a)
+            return find(b)
+
+        for a in range(len(M)):
+            for b in range(a):
+                # 互为朋友，合并朋友圈
+                if M[a][b] == 1: 
+                    union(a, b)
+        for i in range(len(M)): 
+            find(i)
+        
+        # 用set()对数组father去重，看有几个独立的朋友圈
+        return len(set(father))
+
+
+# 并查集法二
+class Solution:
+    def findCircleNum(self, M: List[List[int]]) -> int:
+        if not M: return 0
+        n = len(M)
+        # 初始化并查集，令p[i] = i
+        parent = [i for i in range(n)]
+        for i in range(n):
+            for j in range(i):
+                # 合并所有为 1 的连起来的块，把它们归于一个 parent
+                if M[i][j] == 1:
+                    self.union(parent, i, j)
+
+        # 返回不同的parent的个数，set用来去重
+        return len(set([self.find(parent, i) for i in range(n)]))   
+
+    # 合并
+    def union(self, parent, i, j):
+        p1 = self.find(parent, i)
+        p2 = self.find(parent, j)
+        # 如果某两个节点被连通，则让其中的（任意）一个节点的根节点接到另一个节点的根节点上
+        # 或者parent[p1] = p2也可以
+        parent[p2] = p1
+
+    # 找父节点/领头元素
+    def find(self, parent, i):
+        root = i
+        # 不断地往上找parent
+        while parent[root] != root:
+            root = parent[root]
+        # 路径压缩，这段可以省略
+        # while parent[i] != i:
+        #     x = i
+        #     i = parent[i]
+        #     parent[x] = root
+        return root
+
 # @lc code=end
 
