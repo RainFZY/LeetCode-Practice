@@ -16,15 +16,18 @@
 # 每一次while循环的效果是temp之后的两个节点交换位置，结束后temp移动两位
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
+        # 哨兵节点
         pre = ListNode()
         pre.next = head
         temp = pre # pre是head前面的节点
         while temp.next != None and temp.next.next != None:
+            # 两两交换其中相邻的节点
             start = temp.next
             end = temp.next.next
             temp.next = end
             start.next = end.next
             end.next = start
+            # temp往前移动两位
             temp = start
         
         return pre.next

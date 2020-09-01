@@ -12,7 +12,7 @@
 #         self.left = None
 #         self.right = None
 
-# 递归
+# 递归，跟112先比增加了temp数组存储路径
 # 经典递归模板
 class Solution:
     def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
