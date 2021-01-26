@@ -39,15 +39,15 @@ class Solution:
 
 # 法二：递归 + 哈希表存储，自顶向下
 # 直接用递归的话计算超时
-# harshMap = {}
+hashMap = {}
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n <= 2:
             return n
         # 如果之前已经计算过（存储在哈希表中），就直接调用，避免重复计算
-        if harshMap.get(n):
-            return harshMap.get(n)
-        harshMap[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        if hashMap.get(n):
+            return hashMap.get(n)
+        hashMap[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
         return self.climbStairs(n - 1) + self.climbStairs(n - 2)
 
 # @lc code=end
