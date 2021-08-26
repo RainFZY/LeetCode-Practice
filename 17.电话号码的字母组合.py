@@ -53,5 +53,25 @@ class Solution:
         backTracking(0, digits, [])
         return ans
 
+# 复习
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        ans = []
+        m = {"2":"abc", "3":"def", "4":"ghi", "5":"jkl",
+        "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
+        # i用来计 遍历到了digits的第几个字母
+        def backTrack(i, temp):
+            if len(temp) == len(digits): # if i == len(digits): 也行
+                ans.append(temp)
+                return
+            for char in m[digits[i]]:
+                temp += char
+                backTrack(i+1, temp)
+                temp = temp[:-1] # 字符串删除最后一个字符
+        backTrack(0, "")
+        return ans
+
 # @lc code=end
 

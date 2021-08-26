@@ -45,6 +45,19 @@ class Solution:
         backTrack(1, [])
         return res
 
-
+# 三刷
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+        def backTrack(start, temp):
+            if len(temp) == k:
+                res.append(temp[:]) # 这一行漏了
+                return
+            for i in range(start, n+1):
+                temp.append(i)
+                backTrack(i+1, temp) # 这里写成了start+1
+                temp.pop()
+        backTrack(1, [])
+        return res
 # @lc code=end
 
