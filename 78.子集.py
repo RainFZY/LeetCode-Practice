@@ -5,6 +5,7 @@
 #
 
 # @lc code=start
+# 无重复数组
 # 法一，迭代
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
@@ -40,6 +41,23 @@ class Solution:
 # [] --> [2] --> [2,3]
 # [] --> [3]
 
+# 复习，回溯
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def backTrack(start, temp):
+            if start > len(nums):
+                return
+            # 因为没有任何长度的限制，所以res.append直接写在外面，很关键
+            # 这样也可以把[]直接加进res里
+            res.append(temp[:]) 
+            for i in range(start, len(nums)):
+                temp.append(nums[i])
+                backTrack(i+1, temp)
+                temp.pop()
+        backTrack(0, [])
+        return res
+                
 
 # @lc code=end
 
