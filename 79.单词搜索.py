@@ -11,6 +11,7 @@ class Solution:
         directions = [(-1, 0), (1, 0), (0, 1), (0, -1)]
         row = len(board)
         col = len(board[0])
+        # 回溯
         def helper(i, j, cnt, visited):
             # terminator
             if cnt == len(word):
@@ -36,6 +37,29 @@ class Solution:
                     return True
         return False
 
+# 复习，基本完全没写出来，比一般的回溯要复杂很多
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        directions = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+        cnt, visited = 0, []
+        def backTrack(i, j, cnt, visited):
+            if cnt == len(word):
+                return True
+            for (x, y) in directions:
+                temp_x, temp_y = i + x, j + y
+                if 0 <= temp_x < len(board) and 0 <= temp_y < len(board[0]) and \
+                    (temp_x, temp_y) not in visited and board[temp_x][temp_y] == word[cnt]:
+                    visited.add((temp_x, temp_y))
+                    if backTrack(i+x, j+y, cnt+1, visited):
+                        return True
+                    visited.remove((temp_x, temp_y))
+            return False
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] == word[0] and backTrack(i, j, 1, {(i, j)}):
+                    return True
+        return False
 
 # @lc code=end
 

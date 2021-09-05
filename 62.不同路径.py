@@ -25,7 +25,7 @@ class Solution:
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         array = [1] * n
-        for i in range(1, m):
+        for _ in range(1, m):
             for j in range(1, n):
                 # 新的一行j位置处的路径数 = 上边位置路径数（此时还未更新，上下相等） + 左边位置路径数
                 array[j] = array[j] + array[j - 1]

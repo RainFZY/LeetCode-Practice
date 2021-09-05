@@ -6,11 +6,14 @@
 
 # @lc code=start
 # 法一，DFS
+# 虽然输入是二维数组，但是可以直接在一维上进行遍历
+# 因为比如(1, 3)和(3, 1)表达的都是city 1和3的关系
+# 因此就不需要direction数组了
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         # 以 i 为起点开始深度优先搜索
         def dfs(i):
-            # 先进行标记
+            # 一维数组进行标记
             visited[i] = 1
             # 继续搜索与 i 相连的城市
             for j in range(n):
@@ -32,7 +35,7 @@ class Solution:
         
         return count
 
-# 法二，BFS
+# 法二，BFS，非递归写法
 # BFS与DFS一样，都是一次性遍历完连接的一片区域，然后计数+1
 # 区别在于比如 4 <- 2 <- 1 -> 3的情况，BFS是1遍历到2然后到3，DFS是1到2到4，再到3
 import collections
@@ -107,7 +110,43 @@ class Solution:
         
         return uf.num_of_sets
 
+# 复习，DFS
+class Solution:
+    def findCircleNum(self, M: List[List[int]]) -> int:
+        n = len(M)
+        cnt = 0
+        visited = [0] * n
+        def dfs(i):
+            visited[i] = 1
+            for j in range(n):
+                if not visited[j] and M[i][j] == 1:
+                    dfs(j)
+        for i in range(n):
+            if not visited[i]:
+                cnt += 1
+                dfs(i)
+        return cnt
 
+# 复习，BFS，递归写法
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        cnt = 0
+        n = len(isConnected)
+        visited = [0] * n
+        def bfs(i):
+            queue = []
+            queue.append(i)
+            while queue:
+                i = queue.pop(0)
+                visited[i] = 1
+                for j in range(n):
+                    if isConnected[i][j] == 1 and not visited[j]:
+                        queue.append(j)
+        for i in range(n):
+            if not visited[i]:
+                cnt += 1
+                bfs(i)
+        return cnt
 
 # @lc code=end
 

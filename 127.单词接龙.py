@@ -62,6 +62,33 @@ class Solution:
                         wordList.remove(intermediate_word)
         return 0
 
+# DFS 无法保证转换序列最短
+# import string
+# class Solution:
+#     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+#         if not beginWord or not endWord or not wordList or endWord not in wordList:
+#             return 0
+#         n = len(beginWord)
+#         wordList = set(wordList)
+#         self.cnt = 0
+#         self.flag = 0
+#         def dfs(word):
+#             if word == endWord:
+#                 self.flag = 1
+#                 return
+#             for i in range(n):
+#                 for c in string.ascii_letters:
+#                     intermediate_word = word[:i] + c + word[i+1:]
+#                     if intermediate_word in wordList:
+#                         print(intermediate_word)
+#                         wordList.remove(intermediate_word)
+#                         self.cnt += 1
+#                         dfs(intermediate_word)
+#                         if self.flag == 1:
+#                             return
+#         dfs(beginWord)
+#         return self.cnt
+
 
 # # 法二，双向BFS
 # # 不用 queue 用 set

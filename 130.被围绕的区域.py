@@ -20,6 +20,8 @@ class Solution:
         row = len(board)
         col = len(board[0])
 
+        # 把边界上和 O 连通点找到, 把这些变成 B
+        # DFS的递归写法
         def dfs(i, j):
             board[i][j] = "B"
             for (x, y) in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -68,9 +70,11 @@ class Solution:
             # queue.appendleft((i, j))
             queue.append((i, j))
             while queue:
-                (i, j) = queue.pop()
+                (i, j) = queue.pop(0)
+                # 看该点是否符合继续往下搜索的条件
                 if 0 <= i < row and 0 <= j < col and board[i][j] == "O":
                     board[i][j] = "B"
+                    # 依次加入邻近的四个格子，即“广度优先”
                     for (x, y) in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                         # queue.appendleft((i + x, j + y))
                         queue.append((i + x, j + y))

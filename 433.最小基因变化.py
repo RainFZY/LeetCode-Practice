@@ -27,5 +27,25 @@ class Solution:
                         queue.append((intermediate_word, level + 1))
                         bank.remove(intermediate_word)
         return -1
+
+# 复习
+class Solution:
+    def minMutation(self, start: str, end: str, bank: List[str]) -> int:
+        if not start or not end or not bank or end not in bank:
+            return -1
+        n = len(start)
+        # bank = set(bank)
+        queue = [(start, 1)]
+        while queue:
+            (cur, level) = queue.pop(0)
+            for i in range(n):
+                for c in ["A", "C", "G", "T"]:
+                    intermediate_gene = cur[:i] + c + cur[i+1:]
+                    if intermediate_gene == end:
+                        return level
+                    if intermediate_gene in bank:
+                        bank.remove(intermediate_gene)
+                        queue.append((intermediate_gene, level+1))
+        return -1
 # @lc code=end
 
