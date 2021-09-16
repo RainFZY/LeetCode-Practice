@@ -16,6 +16,7 @@ class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         # 申请两个节点，pre和 cur，pre指向None
         # prev一直在curr前面，用于实现方向调换
+		# 因为这题头节点一直在换，所以不能用prev=ListNode(), prev.next=head
         prev = None
         curr = head
         # 遍历链表
@@ -28,8 +29,13 @@ class Solution:
             prev = curr
             # cur前进一位
             curr = nextTemp
-
+		# prev节点一直前进到5，变成新的head，因此返回prev
         return prev
+
+# 以 prev=None，1 -> 2 -> 3为例，
+# 1是cur，先把2记录为nextTemp，然后cur.next = prev，让1指向prev，断开12连接
+# 1 -> prev，2 -> 3，然后把1跟prev位置互换，2再跟原先的1互换，
+# 就实现了2 -> 1
 
 # 递归
 class Solution(object):
@@ -53,6 +59,16 @@ class Solution(object):
 		# 每层递归函数都返回cur，也就是最后一个节点
 		return cur
 
-
+# 复习
+class Solution:
+	def reverseList(self, head: ListNode) -> ListNode:
+		prev = None
+		cur = head
+		while cur:
+			next_temp = cur.next
+			cur.next = prev
+			prev = cur
+			cur = next_temp
+		return prev
 # @lc code=end
 

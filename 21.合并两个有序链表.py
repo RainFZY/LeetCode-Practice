@@ -6,6 +6,9 @@
 
 # @lc code=start
 # Definition for singly-linked list.
+from typing import List
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -49,6 +52,20 @@ class Solution:
         # 最后去掉哨兵节点，返回它之后的
         return prehead.next
 
-        
+# 复习
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        prev = ListNode(-1)
+        cur = prev
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+        cur.next = l1 if l1 else l2
+        return prev.next
 # @lc code=end
 

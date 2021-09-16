@@ -40,9 +40,19 @@ class Solution:
 #             else:
 #                 return head
 
-
-           
-        
+# 复习，迭代
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        # when to use the prev node?
+        # prev = ListNode()
+        # prev.next =head
+        cur = head
+        while cur and cur.next:
+            if cur.next.val == cur.val:
+                cur.next = cur.next.next # delete
+            else:
+                cur = cur.next
+        return head
 
 # @lc code=end
 

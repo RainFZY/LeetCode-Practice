@@ -23,30 +23,36 @@
 # 整个程序执行时会先按DFS到底，然后一级一级自底而上返回该节点的depth或-1（提前终止）
 
 # 法一：
-# class Solution:
-#     def isBalanced(self, root: TreeNode) -> bool:
-#         # 若root的深度不等于-1，则返回true，为平衡二叉树
-#         return self.depth(root) != -1
+# 先会一探到底，若发现非平衡二叉树，返回-1，之后网上的节点就都是-1（非平衡）
+# 这样就避免了重复计算
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        # 若root的深度不等于-1，则返回true，为平衡二叉树
+        return self.depth(root) != -1
 
-#     def depth(self, root):
-#         if root == None:
-#             # 这里只要返回一个不是-1的都行
-#             return 0
-#         left = self.depth(root.left)
-#         if left == -1:
-#             return -1
-#         right = self.depth(root.right)
-#         if right == -1:
-#             return -1
+    # 若是平衡二叉树，返回子树最大高度
+    # 若不是，返回-1
+    def depth(self, root):
+        if root == None:
+            # 这里只要返回一个不是-1的都行
+            return 0
+        leftHeight = self.depth(root.left)
+        rightHeight = self.depth(root.right)
+        if leftHeight == -1 or rightHeight == -1:
+            return -1
+        if abs(leftHeight - rightHeight) > 1:
+            return -1
 
-#         # if abs(left - right) <= 1:
-#         #     return max(left, right) + 1
-#         # else:
-#         #     return -1
-#         # 简化以上写法
-#         return max(left, right) + 1 if abs(left - right) <= 1 else -1
+        return max(leftHeight, rightHeight) + 1 
 
-# 法二
+    # def depth(self, root):
+        # if abs(left - right) <= 1:
+        #     return max(left, right) + 1
+        # else:
+        #     return -1
+        # 简化以上写法
+
+# 法二：更简洁，但存在重复计算，time complexity高
 class Solution:
     def depth(self, root: TreeNode) -> int:
         if root == None:
