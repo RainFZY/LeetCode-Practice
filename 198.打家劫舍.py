@@ -39,7 +39,9 @@ class Solution:
         if not nums:
             return 0
         n = len(nums)
-        # 构建n * 2的二维数组，第一维代表房屋编号，第二维代表这个房屋不偷 0或偷 1
+        # 构建n * 2的二维数组
+        # 第几行代表第几个房屋的情况
+        # 第一列代表不偷这个房子的收入，第二列代表偷的收入
         array = [[0] * 2 for _ in range(n)]
         array[0][1] = nums[0]
         for i in range(1, n):
