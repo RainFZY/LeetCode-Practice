@@ -11,7 +11,20 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# 二叉搜索树中序遍历
 class Solution:
     def convertBST(self, root: TreeNode) -> TreeNode:
+        cur_sum = 0
+        def traversal(root):
+            nonlocal cur_sum
+            if not root:
+                return
+            traversal(root.right)
+            root.val, cur_sum = root.val + cur_sum, root.val + cur_sum
+            traversal(root.left)
+        traversal(root)
+        return root
+
 # @lc code=end
 
