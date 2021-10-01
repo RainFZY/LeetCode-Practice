@@ -16,15 +16,15 @@
 # class Solution:
 #     def inorderTraversal(self, root: TreeNode) -> List[int]:
 #         res = []
-#         self.helper(root, res)
-#         return res
+#         return self.helper(root, res)
 
 #     def helper(self, root, res):
-#         if root:
-#             self.helper(root.left, res)
-#             res.append(root.val) # 别漏掉.val
-#             self.helper(root.right, res)
-#             return res
+#         if not root:
+#             return []
+#         self.helper(root.left, res)
+#         res.append(root.val) # 别漏掉.val
+#         self.helper(root.right, res)
+#         return res
 
 # 法一变式
 class Solution:
@@ -39,6 +39,8 @@ class Solution:
         return res
 
 # 法二，迭代，利用栈
+# 因为左下角最小，先left探到底，全部加到stack
+# 再利用stack后入先出，把right也加进去
 # class Solution:
 #     def inorderTraversal(self, root: TreeNode) -> List[int]:
 #         res = []
@@ -47,6 +49,7 @@ class Solution:
 #             while root:
 #                 stack.append(root)
 #                 root = root.left
+#             # 后入先出 --> stack
 #             root = stack.pop()
 #             res.append(root.val) # 别漏掉.val
 #             root = root.right

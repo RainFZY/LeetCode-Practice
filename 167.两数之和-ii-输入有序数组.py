@@ -6,6 +6,7 @@
 
 # @lc code=start
 # 双指针，利用已排序数组的特点
+# O(n) time complexity，为最优
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         left, right = 0, len(numbers)-1
