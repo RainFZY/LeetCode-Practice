@@ -19,7 +19,8 @@ class MinStack:
 
     def push(self, x: int) -> None:
         self.stack.append(x)
-        if len(self.minStack) == 0 or x<= self.minStack[-1]:
+        # 最小栈与主栈同步更新，最小栈每次append当前的最小值
+        if len(self.minStack) == 0 or x <= self.minStack[-1]:
             self.minStack.append(x)
         else:
             self.minStack.append(self.minStack[-1])
