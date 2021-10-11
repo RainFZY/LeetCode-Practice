@@ -20,7 +20,7 @@ class Solution:
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        maxHeap = []#创建一个空堆
+        maxHeap = [] #创建一个空堆
         for i in nums:
             # python 本身仅支持小根堆，通过加‘-’号构建大根堆
             heapq.heappush(maxHeap, -i) 
@@ -29,6 +29,7 @@ class Solution:
         # 输出为第k小的item，并乘‘-’恢复成第k大
         return -maxHeap[0] 
 
+# Quick Sort
 from random import randrange
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
