@@ -23,5 +23,21 @@ class Solution:
             hashMapT[char] = hashMapT.get(char, 0) + 1
         return hashMapS == hashMapT
 
+# hashMap，提前剪枝
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        hashMap = {}
+        for char in s:
+            hashMap[char] = hashMap.get(char, 0) + 1
+        for char in t:
+            hashMap[char] = hashMap.get(char, 0) - 1
+            if hashMap[char] < 0:
+                return False
+        for (key, value) in hashMap.items():
+            if value != 0:
+                return False
+        return True
+
+
 # @lc code=end
 

@@ -15,6 +15,7 @@ class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         if not intervals:
             return 0
+        # 按照end大小排序
         intervals.sort(key=lambda x: x[1])
         cur_end = intervals[0][1]
         count = 0
