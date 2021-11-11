@@ -9,7 +9,7 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
         left, right = 0, len(nums) - 1
-        while left < right:
+        while left < right: # <=: 有可能找不到，<: 一定能找到
             mid = left + (right - left) // 2
             # 找到了旋转点，即最小元素
             if nums[mid] < nums[mid - 1]:
