@@ -63,6 +63,26 @@ class Solution:
                 return hashMap[amount]
             
         return dp(amount) 
-        
+
+# 完全0-1背包问题
+# class Solution:
+#     def coinChange(self, coins: List[int], amount: int) -> int:
+#         res = [False] * (amount + 1)
+#         res[0] = []
+#         for x in range(1, amount + 1):
+#             for j in range(len(coins)):
+#                 if coins[j] <= x and res[x - coins[j]] != False:
+#                     res[x] = res[x - coins[j]] + [coins[j]]
+#         return res[amount]
+
+# 非完全0-1背包问题
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        res = [False] * (amount + 1)
+        res[0] = True
+        for i in range(len(coins)):
+            for j in range(amount, coins[i]-1, -1):
+                res[j] = res[j] or res[j - coins[i]]
+        return res[amount]
 # @lc code=end
 

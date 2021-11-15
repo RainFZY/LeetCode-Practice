@@ -8,7 +8,7 @@
 # 二维DP
 # dp[i][j]表示使用前i种硬币组成j金额的组合数
 # dp[i][j] = dp[i-1][j] + dp[i][j-coins[i]]
-#          = 不用第i枚硬币组合数 + 用i枚硬币组合数
+#          = 不用第i枚硬币组合数 + 用第i枚硬币组合数
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         dp = [[0] * (amount + 1) for _ in range(len(coins) + 1)]
