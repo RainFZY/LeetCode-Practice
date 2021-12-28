@@ -14,8 +14,12 @@ class Solution:
         target = sum(nums) // 2
         dp = [False] * (target + 1)
         dp[0] = True
+        # 外层遍历 nums 每个 num
+        # 内层遍历 target（由大到小）
         for i in range(len(nums)):
+            # 保证索引较小的元素值不被覆盖，后向更新 dp[i]
             for j in range(target, nums[i]-1, -1):
+                # 能达到j - nums[i]，那么加上nums[i]也能达到
                 dp[j] = dp[j] or dp[j - nums[i]]
         return dp[target]
 
