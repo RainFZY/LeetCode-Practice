@@ -13,6 +13,7 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         res = [amount + 1] * (amount + 1)
         res[0] = 0
+        # 这里两个循环顺序换一下也可以
         for coin in coins:
             for x in range(1, amount + 1):
                 if coin <= x:
