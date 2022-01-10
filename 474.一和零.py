@@ -15,6 +15,7 @@ class Solution:
         for i in range(len(strs)):
             zeros = strs[i].count('0')
             ones = strs[i].count('1')
+            # 更新j>zeros, k>ones的部分
             for j in range(m, zeros-1, -1):
                 for k in range(n, ones-1, -1):
                     dp[j][k] = max(dp[j][k], dp[j-zeros][k-ones] + 1)
