@@ -5,7 +5,13 @@
 #
 
 # @lc code=start
-# Max Heap
+# 耍赖法
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        return nums[-k]
+
+# Max Heap，大顶堆
 import heapq
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -13,9 +19,11 @@ class Solution:
         # heapq.heapify(heap)
         for i in range(len(nums)):
             heapq.heappush(heap, nums[i])
+            # 维护大小为k的堆
             if len(heap) > k:
                 heapq.heappop(heap) # pop最小值，即pop heap[0]
-            print(heap)     
+            print(heap)
+        # 返回k个最大元素中最小的那个
         return heap[0]
 
 class Solution:
@@ -56,5 +64,7 @@ class Solution:
                 cnt += 1
         a[pivot], a[cnt] = a[cnt], a[pivot]
         return cnt
+
+
 # @lc code=end
 
