@@ -21,6 +21,23 @@ class Solution:
                     dp[i] = max(dp[i], dp[j] + 1)
         return max(dp)
 
+# 法二：单调栈 + 二分查找（调库），O(nlogn)
+# 利用二分查找寻找入栈时插入位置来维护单调栈
+# e.g. [10,9,2,5,3,7,101,18]
+# [10] --> [9] --> [2] --> [2,5] --> [2,3] --> [2,3,7]
+# --> [2,3,7,101] --> [2,3,7,18] --> 长度为4
+import bisect
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        stack = [] # 维护一个单调递增栈
+        for num in nums:
+            # idx: num应该插入在stack中的位置，往左取
+            idx = bisect.bisect_left(stack, num)
+            if idx == len(stack):
+                stack.append(num)
+            else:
+                stack[idx] = num
+        return len(stack)
 
 # DP优化（贪心 + 二分查找），较为巧妙，动画见：
 # https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/dong-tai-gui-hua-er-fen-cha-zhao-tan-xin-suan-fa-p/
