@@ -5,7 +5,7 @@
 #
 
 # @lc code=start
-# 图， 邻接表， 拓扑排序，BFS
+# 图，邻接表，拓扑排序，BFS
 # Kahn 算法
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:

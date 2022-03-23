@@ -48,7 +48,7 @@ class Solution:
             queue = []
             queue.append((i, j))
             while queue:
-                (i, j) = queue.pop(0)
+                (i, j) = queue.pop(0) # pop(0)
                 for (x, y) in directions:
                     temp_x, temp_y = i+x, j+y
                     if 0 <= temp_x < m and 0 <= temp_y < n \
