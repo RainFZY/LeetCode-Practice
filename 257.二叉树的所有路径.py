@@ -12,6 +12,12 @@
 #         self.left = left
 #         self.right = right
 
+# 时间复杂度：O(N^2)，其中 N 表示节点数目。
+# 在深度优先搜索中每个节点会被访问一次且只会被访问一次，
+# 每一次会对 path 变量进行拷贝构造，时间代价为 O(N)，
+# 故时间复杂度为 O(N^2)
+# 空间复杂度：O(N^2)，在最坏情况下，当二叉树中每个节点只有一个孩子节点时，
+# 即整棵二叉树呈一个链状
 
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
