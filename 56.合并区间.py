@@ -14,7 +14,7 @@ class Solution:
         n = len(intervals)
         res = []
         left, right = intervals[0][0], intervals[0][1]
-        for i in range(n):
+        for i in range(1, n):
             if intervals[i][0] <= right and intervals[i][1] > right:
                 right = intervals[i][1]
             elif intervals[i][0] > right:
