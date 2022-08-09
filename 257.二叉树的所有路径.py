@@ -18,6 +18,8 @@
 # 故时间复杂度为 O(N^2)
 # 空间复杂度：O(N^2)，在最坏情况下，当二叉树中每个节点只有一个孩子节点时，
 # 即整棵二叉树呈一个链状
+# 此时递归的层数为N，此时每一层的 path 变量的空间代价的总和为:
+# 1+2+3+...+N = O(N^2)
 
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
@@ -31,7 +33,7 @@ class Solution:
             if root.right:
                 dfs(root.right, path+str(root.val)+"->")
             
-            return res
-        return dfs(root, "")
+        dfs(root, "")
+        return res
 # @lc code=end
 

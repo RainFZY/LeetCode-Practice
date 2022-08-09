@@ -13,6 +13,7 @@
 #         self.right = right
 
 # 法一，BST in-order traversal, not in place
+# 二叉搜索树的中序遍历就是从小到大排
 class Solution:
     def getMinimumDifference(self, root: TreeNode) -> int:
         arr = []

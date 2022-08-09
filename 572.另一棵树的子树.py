@@ -19,7 +19,7 @@ class Solution:
             return True
         if not root or not subRoot:
             return False
-
+        # 完全相同or左子树相同or右子树相同
         return self.isSameTree(root, subRoot) or self.isSubtree(root.left, subRoot) \
             or self.isSubtree(root.right, subRoot)
 
@@ -28,9 +28,8 @@ class Solution:
             return True
         if p == None or q == None:
             return False
-        if p.val != q.val:
-            return False
-        return self.isSameTree(p.left, q.left) and \
+        return p.val == q.val and \
+            self.isSameTree(p.left, q.left) and \
             self.isSameTree(p.right, q.right)
 # @lc code=end
 

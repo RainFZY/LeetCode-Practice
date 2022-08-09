@@ -18,7 +18,7 @@ class Solution:
     def findTarget(self, root: TreeNode, k: int) -> bool:
         arr = []
         def traversal(root):
-            nonlocal arr
+            # nonlocal arr
             if not root:
                 return
             traversal(root.left)

@@ -11,6 +11,7 @@ class Solution:
         self.trie = DefaultDict(list) # 因为要返回list，所以初始化为list型
 
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        # 往字典树里面insert，嵌套形式
         def addWord(root, word):
             cur = root
             for ch in word:

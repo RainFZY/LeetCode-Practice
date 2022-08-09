@@ -12,7 +12,7 @@
 #         self.left = left
 #         self.right = right
 
-# Binary Search Tree, in-order traversal
+# Binary Search Tree, in-order traversal（任何序遍历都行）
 class Solution:
     def findMode(self, root: TreeNode) -> List[int]:
         hashMap = {} # 这题用字典比用数组更方便

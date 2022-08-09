@@ -34,8 +34,10 @@ class Solution:
                         treeNode = TreeNode(i)
                         treeNode.left = left_tree
                         treeNode.right = right_tree
+                        # 每一个treeNode就代表一棵树
                         res.append(treeNode)
             return res
+        # print(subTrees(1, n))
         return subTrees(1, n)
 # @lc code=end
 

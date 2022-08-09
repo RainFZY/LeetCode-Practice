@@ -58,43 +58,43 @@ class Solution:
         recursion(root, 0)
         return res
 
-# 复习，dfs
+# 复习2，dfs
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         res = []
-        if not root:
-            return []
-        def dfs(root, level):
-            if len(res) == level:
+        def recursion(root, level):
+            if not root:
+                return
+            if len(res)==level:
                 res.append([])
             res[level].append(root.val)
             if root.left:
-                dfs(root.left, level+1)
+                recursion(root.left, level+1)
             if root.right:
-                dfs(root.right, level+1)
-        dfs(root, 0)
+                recursion(root.right, level+1)
+        recursion(root, 0)
         return res
 
 # 复习，BFS
-class Solution:
-    def levelOrder(self, root: TreeNode) -> List[List[int]]:
-        if not root:
-            return []
-        res = []
-        queue = []
-        queue.append(root)
-        while queue:
-            next_level = []
-            temp = []
-            for node in queue:
-                temp.append(node.val)
-                if node.left:
-                    next_level.append(node.left)
-                if node.right:
-                    next_level.append(node.right)
-            res.append(temp)
-            queue = next_level
-        return res
+# class Solution:
+#     def levelOrder(self, root: TreeNode) -> List[List[int]]:
+#         if not root:
+#             return []
+#         res = []
+#         queue = []
+#         queue.append(root)
+#         while queue:
+#             next_level = []
+#             temp = []
+#             for node in queue:
+#                 temp.append(node.val)
+#                 if node.left:
+#                     next_level.append(node.left)
+#                 if node.right:
+#                     next_level.append(node.right)
+#             res.append(temp)
+#             queue = next_level
+#         return res
 
 
 

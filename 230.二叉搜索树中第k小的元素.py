@@ -15,20 +15,21 @@
 # 二叉搜索树中序遍历
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
-        cnt, res = 0, 0
+        self.cnt, self.res = 0, 0
         def helper(root):
-            nonlocal cnt, res
+            # nonlocal cnt, res
             if not root:
                 return 
             helper(root.left)
-            cnt += 1 # 必须在left和right中间加
-            if cnt == k:
-                res = root.val
+            # 对于每个root，先往left一探到底，到最小值
+            self.cnt += 1 # 必须在left和right中间加
+            if self.cnt == k:
+                self.res = root.val
                 return
             helper(root.right)
-        print(cnt)
+
         helper(root)
-        return res
+        return self.res
         
 # @lc code=end
 

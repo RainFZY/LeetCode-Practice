@@ -13,6 +13,7 @@
 #         self.right = right
 
 # 类似102 二叉树的层序遍历
+# BFS
 class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         if not root:
@@ -32,5 +33,25 @@ class Solution:
             queue = next_level
         return res
 
+# DFS
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        res = []
+        def dfs(root, level):
+            if not root:
+                return
+            if len(res) == level:
+                res.append([])
+            res[level].append(root.val)
+            if root.left:
+                dfs(root.left, level+1)
+            if root.right:
+                dfs(root.right, level+1)
+        dfs(root,0)
+        for i in range(len(res)):
+            temp = res[i].copy()
+            res[i] = sum(temp)/len(temp)
+        return res
+            
 # @lc code=end
 

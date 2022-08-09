@@ -13,6 +13,7 @@
 #         self.right = right
 
 # 我的写法，先序遍历 preoder traversal，先都存进去，最后再比较
+# 比较 中左右 是否等于 中右左
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         leftList, rightList = [], []
@@ -30,9 +31,10 @@ class Solution:
             rightList.append(root.val)
             dfs_right(root.right)
             dfs_right(root.left)
+
         dfs_left(root)
         dfs_right(root)
-        print(leftList, rightList)
+        # print(leftList, rightList)
         return leftList == rightList
 
 # 先序遍历，随时比较

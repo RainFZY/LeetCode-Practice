@@ -13,7 +13,7 @@
 #         self.right = right
 # DFS
 class Solution:
-    # 必须包含当前节点的path
+    # 包含当前节点的path的数量
     def pathSumWithRoot(self, root: TreeNode, targetSum: int):
         if not root:
             return 0
@@ -52,7 +52,7 @@ class Solution:
             + dfs(root, targetSum) 
 
 
-# DFS
+# DFS，较难懂
 # https://leetcode-cn.com/problems/path-sum-iii/solution/437zhi-xu-yi-ci-di-gui-wu-xing-dai-ma-yong-lie-bia/
 # 计算每一步中，sum在数组sumlist中出现的次数，然后与每一轮递归的结果相加
 class Solution:
